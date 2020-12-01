@@ -10,8 +10,19 @@ def get2020Product() -> Optional[int]:
     return None
 
 
+def get2020ProductPart2() -> Optional[int]:
+    expense_list = readList('input.txt', int)
+    for first in expense_list:
+        for second in expense_list:
+            for third in expense_list:
+                if first + second + third == 2020:
+                    return first * second * third
+    return None
+
+
 def main():
     answer = get2020Product()
+    answer = get2020ProductPart2()
     print(f'Answer: {answer}')
 
 
