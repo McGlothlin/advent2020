@@ -21,9 +21,11 @@ def get2020ProductPart2() -> Optional[int]:
 
 
 def main():
-    answer = get2020Product()
-    answer = get2020ProductPart2()
-    print(f'Answer: {answer}')
+    answer1 = get2020Product()
+    answer2 = get2020ProductPart2()
+
+    print(f'Answer 1: {answer1}')
+    print(f'Answer 2: {answer2}')
 
 
 if __name__ == '__main__':
