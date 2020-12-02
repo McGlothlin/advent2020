@@ -3,8 +3,8 @@ import java.io.File
 
 class ExpenseReport {
     private val fileName = System.getProperty("user.dir") + "/src/main/kotlin/dayOne/input.txt"
-
     private val expenseList: List<Int> = File(fileName).readLines().map { Integer.parseInt(it) }
+
 
     fun getProduct(): Int? {
         for (multiplicand in expenseList) {
@@ -16,6 +16,7 @@ class ExpenseReport {
         }
         return null
     }
+
 
     fun getProductPart2(): Int? {
         for (first in expenseList) {
