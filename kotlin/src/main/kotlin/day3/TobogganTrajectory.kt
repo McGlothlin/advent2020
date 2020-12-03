@@ -1,9 +1,9 @@
-package dayThree
+package day3
 
 import common.InputReader
 
 class TobogganTrajectory {
-    private val treeMap = InputReader("dayThree").getInputListString()
+    private val treeMap = InputReader("day3").getInputListString()
 
     fun treesHit(stepsRight: Int, stepsDown: Int): Int {
         var hits: Int = 0
