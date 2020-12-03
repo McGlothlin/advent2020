@@ -1,10 +1,10 @@
-package day2
+package day02
 
 import common.InputReader
 import kotlin.text.Regex
 
 class PasswordChecker {
-    private val passwordList = InputReader("day2")
+    private val passwordList = InputReader("day02")
         .getInputListString()
         .map { Regex("([0-9]+)-([0-9]+) ([a-z]): ([a-z]+)").find(it) }
         .map { it!!.destructured }

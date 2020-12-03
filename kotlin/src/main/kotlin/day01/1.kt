@@ -1,9 +1,9 @@
-package day1
+package day01
 
 import common.InputReader
 
 class ExpenseReport {
-    private val reader = InputReader("day1")
+    private val reader = InputReader("day01")
     private val expenseList = reader.getInputListInt()
 
 
