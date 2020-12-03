@@ -1,0 +1,5 @@
+package dayTwo
+
+class PasswordChecker {
+    
+}

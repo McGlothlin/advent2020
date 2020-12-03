@@ -4,4 +4,5 @@ venv/
 gradle/
 build/
 local.properties
+python/__pycache__/
 
