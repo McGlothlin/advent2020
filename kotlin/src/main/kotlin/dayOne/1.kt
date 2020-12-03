@@ -1,9 +1,10 @@
 package dayOne
-import java.io.File
+
+import common.InputReader
 
 class ExpenseReport {
-    private val fileName = System.getProperty("user.dir") + "/src/main/kotlin/dayOne/input.txt"
-    private val expenseList: List<Int> = File(fileName).readLines().map { Integer.parseInt(it) }
+    private val reader = InputReader("dayOne")
+    private val expenseList = reader.getInputListInt()
 
 
     fun getProduct(): Int? {
