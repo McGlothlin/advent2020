@@ -9,3 +9,7 @@ def readList(filename: str, func=str):
         except TypeError as e:
             print(f'Error: type {func} not allowed here.')
             raise e
+
+
+def inclusiveRange(start: int, stop: int):
+    return range(start, stop + 1)

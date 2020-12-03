@@ -1,4 +1,4 @@
-from common import readList
+from common import readList, inclusiveRange
 
 def answerTwo():
     valid = []
@@ -16,8 +16,7 @@ def answerTwo():
 
 def main():
     # I did this not because it's good code, but to see if I could make it work. It works.
-    # I wanted to use `range(*map(int, occurrences.split('-')))` on the first line but the max of range() is exclusive.
-    part1 = [int(occurrences.split('-')[0]) <= password.count(character.strip(':')) <= int(occurrences.split('-')[-1])
+    part1 = [password.count(character.strip(':')) in inclusiveRange(*map(int, occurrences.split('-')))
              for occurrences, character, password in [line.split(' ') for line in readList('input.txt')]].count(True)
 
     part2 = answerTwo()
