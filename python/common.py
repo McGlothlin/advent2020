@@ -1,4 +1,4 @@
-def readList(filename: str, func=str):
+def readList(filename: str = './input.txt', func = str):
     """ Reads a file and returns a list of floats. """
     with open(filename, 'r') as f:
         input_list = f.readlines()
