@@ -4,12 +4,10 @@ import common.InputReader
 import kotlin.text.Regex
 
 class PasswordChecker {
-    private val reader = InputReader("dayTwo")
-    private val pattern = Regex("([0-9]+)-([0-9]+) ([a-z]): ([a-z]+)")
-    private val inputList = reader.getInputListString()
-    private val match = inputList.map {pattern.find(it) }
-    private val passwordList = match.map { it!!.destructured }
-
+    private val passwordList = InputReader("dayTwo")
+        .getInputListString()
+        .map { Regex("([0-9]+)-([0-9]+) ([a-z]): ([a-z]+)").find(it) }
+        .map { it!!.destructured }
 
     fun checkCharCount(): Int {
         val valid: MutableList<String> = mutableListOf()
