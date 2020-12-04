@@ -1,5 +1,10 @@
-def readList(filename: str = './input.txt', func = str):
-    """ Reads a file and returns a list of floats. """
+from typing import Any
+
+def readList(filename: str = './input.txt', func = str) -> Any:
+    """ Reads a file and returns a list of type `func`.
+
+        Raises a TypeError if `func` is not a unary type conversion function.
+    """
     with open(filename, 'r') as f:
         input_list = f.readlines()
         try:
@@ -11,5 +16,10 @@ def readList(filename: str = './input.txt', func = str):
             raise e
 
 
-def inclusiveRange(start: int, stop: int):
+def readString(filename: str = './input.txt') -> str:
+    with open(filename, 'r') as f:
+        return f.read()
+
+
+def inclusiveRange(start: int, stop: int) -> range:
     return range(start, stop + 1)
