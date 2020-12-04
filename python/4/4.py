@@ -1,6 +1,6 @@
 import re
 from dataclasses import dataclass
-from typing import Optional, List, Dict
+from typing import Optional, List
 from common import readString
 
 
@@ -26,7 +26,6 @@ class PassportAdapter(Passport):
 
         Populate our passport values using an alias.
     """
-
     def __init__(self, byr, iyr, eyr, hgt, hcl, ecl, pid, cid=None):
         self.birth_year = byr
         self.issue_year = iyr
@@ -37,35 +36,6 @@ class PassportAdapter(Passport):
         self.passport_id = pid
         self.country_id = cid
 
-    # def __init__(self):
-    #     try:
-    #         super().__init__(**kwargs)
-    #     except TypeError as e:
-    #         if
-
-    # aliases = {
-    #     'byr': 'birth_year',
-    #     'iyr': 'issue_year',
-    #     'eyr': 'expiration_year',
-    #     'hgt': 'height',
-    #     'hcl': 'hair_color',
-    #     'ecl': 'eye_color',
-    #     'pid': 'passport_id',
-    #     'cid': 'country_id'
-    # }
-    #
-    #
-    # def __getattr__(self, attr):
-    #     if attr in self.aliases:
-    #         getattr(self, self.aliases.get(attr))
-    #
-    #
-    # def __setattr__(self, key, value):
-    #     try:
-    #         super().__setattr__(key, value)
-    #     except AttributeError:
-    #         setattr(self, self.aliases[key], value)
-
 
 class PassportParser:
     def __init__(self):
@@ -75,9 +45,9 @@ class PassportParser:
 
 
     def parse_file(self, file_path):
-        passport_separator = re.compile('\n{2}')
-        field_separator = re.compile(' |\n')
-        key_val_separator = re.compile(':')
+        passport_separator = re.compile('\n{2}')  # Separates distinct passports
+        field_separator = re.compile(' |\n')  # Separates fields within a single passport
+        key_val_separator = re.compile(':')  # Separates the key/value pairs of a given field
 
         input_string = readString(file_path)
         input_list = re.split(passport_separator, input_string)
