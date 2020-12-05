@@ -44,7 +44,7 @@ class PassportAdapter(Passport):
         self.validate_height(self.height)
         self.validate_pattern(self.hair_color, re.compile(r'#[0-9a-f]{6}'))
         self.validate_eyes(self.eye_color)
-        self.validate_pattern(self.passport_id, re.compile(r'[0-9]{9}'))
+        self.validate_pattern(self.passport_id, re.compile(r'^[0-9]{9}$'))
 
     @staticmethod
     def validate_range(number, start, end):
@@ -135,8 +135,6 @@ def main():
 
     part1 = len(parser1.get_passports())
     part2 = len(parser2.get_passports())
-    foo = parser2.get_passports()
-    print(foo)
 
     print(f'Answer 1: {part1}')
     print(f'Answer 2: {part2}')
