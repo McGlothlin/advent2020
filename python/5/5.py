@@ -55,7 +55,7 @@ def getMissingSeatID():
                 continue
 
             return seat_id
-    raise ValueError('No empty seat found!')
+    return None
 
 
 def main():
