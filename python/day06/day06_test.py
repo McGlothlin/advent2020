@@ -23,10 +23,17 @@ b"""
 
     def test_splitObjects(self):
         groups = splitObjects(self.input_str)
-        self.assertEqual(groups, 5)
+        self.assertEqual(len(groups), 5)
 
 
-    def test_getYesAnswers(self):
+    def test_getDistinctYesAnswers(self):
         groups = splitObjects(self.input_str)
-        result = day06.getYesAnswers(groups)
+        result = day06.getDistinctYesAnswers(groups)
         self.assertEqual(result, 11)
+
+
+    def test_getAllYesAnswers(self):
+        groups = splitObjects(self.input_str)
+
+        result = day06.getAllYesAnswers(groups)
+        self.assertEqual(result, 6)
