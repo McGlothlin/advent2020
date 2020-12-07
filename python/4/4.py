@@ -42,7 +42,7 @@ class PassportAdapter(Passport):
         self.validate_range(self.issue_year, 2010, 2020)
         self.validate_range(self.expiration_year, 2020, 2030)
         self.validate_height(self.height)
-        self.validate_pattern(self.hair_color, re.compile(r'#[0-9a-f]{6}'))
+        self.validate_pattern(self.hair_color, re.compile(r'#[0-9a-f]{day06}'))
         self.validate_eyes(self.eye_color)
         self.validate_pattern(self.passport_id, re.compile(r'^[0-9]{9}$'))
 

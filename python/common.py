@@ -1,4 +1,11 @@
-from typing import Any
+import re
+from typing import Any, List
+
+STD_OBJ_SEPARATOR = re.compile('\n{2}')
+
+def splitObjects(input_str: str) -> List[str]:
+    return re.split(STD_OBJ_SEPARATOR, input_str)
+
 
 def readList(filename: str = './input.txt', func = str) -> Any:
     """ Reads a file and returns a list of type `func`.
