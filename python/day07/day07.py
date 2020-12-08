@@ -29,7 +29,7 @@ class Bag:
 
 
 class BagBuilder:
-    def __init__(self, filename: str):
+    def __init__(self, filename: str = 'input.txt'):
         self.input_list = readList(filename=filename)
         # A list of top level bags found at the start of each line
         self.top_level_bags: List[Bag] = []
