@@ -9,6 +9,7 @@ class Bag:
         self._color: str = color
         self._contents: List[Union[Bag, List[Bag]]] = []
 
+    @property
     def isGold(self):
         if self.texture == 'shiny' and self.color == 'gold':
             return True
@@ -45,7 +46,12 @@ class BagBuilder:
             big_bag_tokens = big_bag_matches.split(' ')
             big_bag = Bag(*big_bag_tokens)
 
-            little_bag_matches = re.search(little_bag_pattern, line).groups()
+            little_bag_matches = re.search(little_bag_pattern, line)
+            if not little_bag_matches:
+                # No matches found
+                continue
+            else:
+                little_bag_matches = little_bag_matches.groups()
             for bag_string in little_bag_matches:
                 big_bag_contents = []
                 little_bag_tokens = bag_string.split(' ')
@@ -59,10 +65,28 @@ class BagBuilder:
             self.top_level_bags.append(big_bag)
 
 
+    def findGoldBag(self, bag_stack: List[Union[Bag, List[Bag]]] = None):
+        if not bag_stack:
+            bag_stack = self.top_level_bags
+
+        for bag in bag_stack:
+            if bag.contents:
+                map(self.findGoldBag, bag.contents)
+
+            # Base case
+            if bag.isGold:
+                return bag
+
+
+
+
+
+
 def main():
 
     bag_builder = BagBuilder()
     bag_builder.build()
+    has_gold = bag_builder.findGoldBag()
 
     print('Got bags?')
 
