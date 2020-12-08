@@ -1,5 +1,6 @@
 import unittest
 
+
 class TestDay07(unittest.TestCase):
     def setUp(self) -> None:
         self.input_str = """
@@ -15,3 +16,5 @@ dotted black bags contain no other bags.
         """
 
 
+    def findGoldBag(self):
+        bag_builder =

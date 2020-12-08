@@ -65,18 +65,27 @@ class BagBuilder:
             self.top_level_bags.append(big_bag)
 
 
-    def findGoldBag(self, bag_stack: List[Union[Bag, List[Bag]]] = None):
-        if not bag_stack:
-            bag_stack = self.top_level_bags
+    def findGoldBag(self, bag_list: List[Union[Bag, List[Bag]]] = None):
+        if not bag_list:
+            bag_list = self.top_level_bags
 
-        for bag in bag_stack:
-            if bag.contents:
-                map(self.findGoldBag, bag.contents)
+        for bag_contents in bag_list:
+            if isinstance(bag_contents, list):
+                return self.findGoldBag(bag_contents)
+            elif isinstance(bag_contents, Bag):
+                if bag_contents.isGold:
+                    return bag_contents
+            else:
+                return None
 
-            # Base case
-            if bag.isGold:
-                return bag
 
+    def getGoldBags(self):
+        bags_with_gold = self.top_level_bags
+        for bag in bags_with_gold:
+            if not self.findGoldBag(bag.contents):
+                bags_with_gold.remove(bag)
+
+        return bags_with_gold
 
 
 
@@ -86,7 +95,8 @@ def main():
 
     bag_builder = BagBuilder()
     bag_builder.build()
-    has_gold = bag_builder.findGoldBag()
+    bag_builder.findGoldBag()
+    bags_with_gold = bag_builder.getGoldBags()
 
     print('Got bags?')
 
