@@ -1,26 +1,13 @@
 import unittest
-from .day07 import BagBuilder
-from common import readString
+import day07
+
 
 class TestDay07(unittest.TestCase):
-    def setUp(self) -> None:
-        self.input_str = """
-light red bags contain 1 bright white bag, 2 muted yellow bags.
-dark orange bags contain 3 bright white bags, 4 muted yellow bags.
-bright white bags contain 1 shiny gold bag.
-muted yellow bags contain 2 shiny gold bags, 9 faded blue bags.
-shiny gold bags contain 1 dark olive bag, 2 vibrant plum bags.
-dark olive bags contain 3 faded blue bags, 4 dotted black bags.
-vibrant plum bags contain 5 faded blue bags, 6 dotted black bags.
-faded blue bags contain no other bags.
-dotted black bags contain no other bags.
-        """
-
 
     def test_findGoldBag(self):
-        bag_builder = BagBuilder()
-        bag_builder.input_list = self.input_str.split('\n')
+        bag_builder = day07.BagBuilder('test_input.txt')
 
+        bag_builder.build()
         bag_builder.findGoldBag()
         bags_with_gold = bag_builder.getGoldBags()
 

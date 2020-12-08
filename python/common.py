@@ -1,5 +1,6 @@
 import re
 from typing import Any, List
+import os
 
 STD_OBJ_SEPARATOR = re.compile(r'\A\n+|\n{2}|\n+\Z')
 
@@ -12,6 +13,7 @@ def readList(filename: str = './input.txt', func = str) -> Any:
 
         Raises a TypeError if `func` is not a unary type conversion function.
     """
+    print(os.listdir())
     with open(filename, 'r') as f:
         input_list = f.readlines()
         try:

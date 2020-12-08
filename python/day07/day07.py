@@ -29,8 +29,8 @@ class Bag:
 
 
 class BagBuilder:
-    def __init__(self):
-        self.input_list = readList()
+    def __init__(self, filename: str):
+        self.input_list = readList(filename=filename)
         # A list of top level bags found at the start of each line
         self.top_level_bags: List[Bag] = []
 
@@ -88,8 +88,6 @@ class BagBuilder:
 
 
 
-
-
 def main():
 
     bag_builder = BagBuilder()
@@ -99,10 +97,10 @@ def main():
 
     print('Got bags?')
 
-    # part1 = getDistinctYesAnswers(getGroups())
+    part1 = len(bags_with_gold)
     # part2 = getAllYesAnswers(getGroups())
     #
-    # print(f'Answer 1: {part1}')
+    print(f'Answer 1: {part1}')
     # print(f'Answer 2: {part2}')
 
 
