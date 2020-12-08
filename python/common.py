@@ -1,7 +1,7 @@
 import re
 from typing import Any, List
 
-STD_OBJ_SEPARATOR = re.compile('\n{2}')
+STD_OBJ_SEPARATOR = re.compile(r'\A\n+|\n{2}|\n+\Z')
 
 def splitObjects(input_str: str) -> List[str]:
     return re.split(STD_OBJ_SEPARATOR, input_str)

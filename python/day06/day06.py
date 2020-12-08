@@ -13,18 +13,23 @@ def getDistinctYesAnswers(groups):
 def getAllYesAnswers(groups):
     group_totals = []
     for group in groups:
+        if group == '':
+            continue
         # Counts the number of yeses per group
         yes_counter: dict = {}
         num_persons: int = 0
+        all_answered: int = 0
+
+        # Loops through all people in a group
         for person in group.split('\n'):
             num_persons += 1
-            for answer in list(person):
+            for answer in set(person):
                 if answer not in yes_counter:
                     yes_counter[answer] = 1
                 else:
                     yes_counter[answer] += 1
 
-        all_answered = 0
+        # Loops through all "yes" answers in a group
         for answer, count in yes_counter.items():
             if count == num_persons:
                 all_answered += 1
