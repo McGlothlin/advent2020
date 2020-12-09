@@ -23,7 +23,7 @@ class BagBuilder:
 
             for nested_bag in re.findall(bag_contents, line):
                 nested_bag_tokens = nested_bag.split(' ')
-                count = nested_bag_tokens.pop(0)
+                count = int(nested_bag_tokens.pop(0))
                 nested_bag = ' '.join(nested_bag_tokens)
 
                 self.bag_graph[bag][nested_bag] = count
@@ -43,6 +43,16 @@ class BagBuilder:
                 bag_list.append(bag)
         return bag_list
 
+    def getBagCount(self, bag_key):
+        total = 0
+        if not self.bag_graph.get(bag_key):
+            return 0
+
+        for bag, count in self.bag_graph[bag_key].items():
+            total += count + (count * self.getBagCount(bag))
+
+        return total
+
 
 def main():
 
@@ -51,13 +61,12 @@ def main():
     bag_builder.buildGoldList()
 
     part1 = len(bag_builder.gold_list)
+    part2 = bag_builder.getBagCount('shiny gold')
 
     print('Got bags?')
 
-    # part2 = getAllYesAnswers(getGroups())
-    #
     print(f'Answer 1: {part1}')
-    # print(f'Answer 2: {part2}')
+    print(f'Answer 2: {part2}')
 
 
 if __name__ == '__main__':

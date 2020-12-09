@@ -17,3 +17,14 @@ class TestDay07(unittest.TestCase):
     def test_listSize(self):
         # Two bags contain no other bags. Therefore, we do not really care about these in our top level bag list.
         self.assertEqual(9, len(self.bag_builder.bag_graph))
+
+
+    def test_getBagCount(self):
+        # New bag builder instance with different input
+        bag_builder = day07.BagBuilder('test_input2.txt')
+        bag_builder.buildGraph()
+        count = bag_builder.getBagCount('shiny gold')
+        self.assertEqual(126, count)
+
+        # count = self.bag_builder.getBagCount('shiny gold')
+        # self.assertEqual(32, count)
