@@ -2,10 +2,11 @@ from common import readList
 import re
 
 class AsmReader:
-    def __init__(self, filename='input.txt'):
+    def __init__(self, boot_check, filename='input.txt'):
         self.accumulator = 0
         self.instructions = readList(filename=filename)
         self.instructions_read = set()
+        self.boot_check = boot_check
 
         self.instruction_pattern = re.compile(r'^(acc|jmp|nop) ([+\-])(\d+)$')
 
@@ -16,8 +17,9 @@ class AsmReader:
             instruction = re.findall(self.instruction_pattern, self.instructions[i]).pop()
             if i in self.instructions_read:
                 # About to re-read an instruction. Exit for part 1.
+                if self.boot_check:
+                    raise ArithmeticError(f'Infinite loop! Repeated line {i}.')
                 return self.accumulator
-                # raise ArithmeticError(f'Infinite loop! Repeated line {i}.')
             self.instructions_read.add(i)
 
             if len(instruction) == 1:
@@ -43,6 +45,9 @@ class AsmReader:
                 continue
 
             i += 1
+        if i == len(self.instructions):
+            print('Execution halted.')
+            return self.accumulator
         print('Execution halted.')
 
 

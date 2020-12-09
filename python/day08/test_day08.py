@@ -5,7 +5,13 @@ import day08
 class TestDay08(unittest.TestCase):
 
     def test_execute(self):
-        reader = day08.AsmReader('test_input.txt')
+        reader = day08.AsmReader(boot_check=False, filename='test_input.txt')
         acc = reader.execute()
 
         self.assertEqual(5, acc)
+
+    def test_bootCheck(self):
+        reader = day08.AsmReader(boot_check=True, filename='test_input.txt')
+        acc = reader.execute()
+
+        self.assertEqual(8, acc)
