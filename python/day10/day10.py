@@ -51,10 +51,7 @@ class DaisyChain:
             start_index += 1
             stop_index = start_index + 1
 
-        # Tail recursion
-        valid_chains += self.part2(start_index, stop_index, valid_chains)
-
-        return valid_chains
+        return self.part2(start_index, stop_index, valid_chains)
 
 def main():
     chain = DaisyChain()
