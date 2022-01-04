@@ -30,3 +30,15 @@ def readString(filename: str = './input.txt') -> str:
 
 def inclusiveRange(start: int, stop: int) -> range:
     return range(start, stop + 1)
+
+
+def read_matrix(filename: str) -> List[List]:
+    with open(filename, 'r') as f:
+        matrix = [list(row) for row in f.read().splitlines()]
+
+    return matrix
+
+
+def write_matrix(matrix, outfile):
+    with open(outfile, 'w') as f:
+        f.writelines([''.join(row) + '\n' for row in matrix])
